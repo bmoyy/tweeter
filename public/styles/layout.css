@@ -31,11 +31,10 @@ body {
  main {
   width: 90%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #545149;
-  background-color: #f4f1ec;
   /* border-color: #a14040;
   border-style: dotted; */
-  /* margin-left: 100px; */
+  /* margin-left: 100px;*/
  }
