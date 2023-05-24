@@ -1,6 +1,6 @@
 .tweet-container {
   display: flex;
-  justify-content: column;
+  flex-direction: column;
   width: 100%;
   font-family: "Source Sans Pro", sans-serif;
   /* border-color: #a14040;
