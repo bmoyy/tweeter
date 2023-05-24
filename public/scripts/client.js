@@ -5,39 +5,12 @@
  */
 $(document).ready(() => {
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ];
-
-
   const renderTweets = function(tweets) {
-    for (tweet of tweets) {
+    for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').append($tweet);
     }
-  }
+  };
 
   const createTweetElement = function(tweetData) {
     return $(`
@@ -63,6 +36,28 @@ $(document).ready(() => {
 </article>`);
   };
 
-  renderTweets(data);
+  $('#tweet-submit').on('submit', (event) => {
+    event.preventDefault();
+    const encodedTweet = $('#tweet-submit').serialize();
 
+    $.ajax({
+      url: 'http://localhost:8080/tweets',
+      method: 'POST',
+      data: encodedTweet
+    }).then(() => {
+      console.log(encodedTweet);
+
+    });
+  });
+
+  const loadTweets = function() {
+    $.ajax({
+      url:"http://localhost:8080/tweets",
+      method: 'GET',
+    }).then((data) => {
+      renderTweets(data);
+    })
+  };
+
+  loadTweets();
 });

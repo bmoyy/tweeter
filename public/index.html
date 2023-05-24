@@ -41,13 +41,11 @@
 <body>
   <!-- Top nav bar (fixed) -->
   <nav>
-    <div class="title">
       <span>tweeter</span>
       <div class="subtext">
-        <span>Write a new tweet</span>
+        <span><strong>Write</strong> a new tweet</span>
         <i class="fa-solid fa-angles-down"></i>
       </div>
-    </div>
   </nav>
 
   <header>
@@ -64,7 +62,7 @@
   <main class="container">
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
-      <form method="POST" action="/tweets" enctype="application/x-www-form-urlencoded">
+      <form method="POST" action="/tweets" enctype="application/x-www-form-urlencoded" id="tweet-submit">
         <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
         <div class="extra">
           <button class="button" type="submit">Tweet</button>
