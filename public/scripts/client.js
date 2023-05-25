@@ -5,6 +5,12 @@
  */
 $(document).ready(() => {
 
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
@@ -18,13 +24,12 @@ $(document).ready(() => {
   <div class="user">
     <div class="profile">
       <img class= "profile-picture" src=${tweetData.user.avatars}>
-      <h5 class="username">${tweetData.user.name}</h5>
+      <h5 class="username">${escape(tweetData.user.name)}</h5>
     </div>
-    <div class="display-name">${tweetData.user.handle}</div>
+    <div class="display-name">${escape(tweetData.user.handle)}</div>
   </div>
   <div class="tweet-message">
-    <p name="text" id="tweet-message">${tweetData.content.text}</p>
-    <script>$("p").text(${tweetData.content.text})</script>
+    <p name="text" id="tweet-message">${escape(tweetData.content.text)}</p>
   </div>
   <div class="extras">
     <h4 class="date">${timeago.format(tweetData.created_at)}</h4>
