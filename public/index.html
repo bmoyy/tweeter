@@ -63,6 +63,9 @@
   <!-- Page-specific (main) content here -->
   <main class="container">
     <section class="new-tweet">
+      <div class="error-box">
+        <div id="error" style="display:none"></div>
+      </div>
       <h2>Compose Tweet</h2>
       <form method="POST" action="/tweets" enctype="application/x-www-form-urlencoded" id="tweet-submit">
         <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>

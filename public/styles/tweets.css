@@ -78,3 +78,17 @@
 .icon:hover {
   color:rgb(196, 196, 45)
 }
+
+#error {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  border: 3.5px solid red;
+  color: red;
+  padding: 10px 5px;
+}
+
+.error-box{
+  display:flex;
+  justify-content: center;
+}

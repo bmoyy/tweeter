@@ -12,6 +12,8 @@ $(document).ready(() => {
   };
 
   const renderTweets = function(tweets) {
+    $('#tweets-container').empty();
+
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
@@ -48,13 +50,14 @@ $(document).ready(() => {
     event.preventDefault();
     const maxLength = 140;
     const tweetlength = $(this).find("textarea").val().length;
+    $('#error').slideUp("fast");
 
     if (tweetlength > maxLength) {
-      return alert("Exceeded max character length!");
+      return $('#error').html('Exceeded max character limit of 140.'), $('#error').slideDown("slow") ;
     }
 
     if (tweetlength === 0) {
-      return alert("Please enter a tweet!");
+      return $('#error').html('Cannot send an empty tweet! Please enter text.'), $('#error').slideDown("slow") ;
     }
 
     const encodedTweet = $('#tweet-submit').serialize();

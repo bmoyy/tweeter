@@ -34,7 +34,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border-color: #a14040;
-  border-style: dotted; */
-  /* margin-left: 100px;*/
+ }
+
+ .new-tweet{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
  }
