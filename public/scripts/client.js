@@ -8,7 +8,7 @@ $(document).ready(() => {
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     }
   };
 
@@ -23,10 +23,11 @@ $(document).ready(() => {
     <div class="display-name">${tweetData.user.handle}</div>
   </div>
   <div class="tweet-message">
-    <textarea name="text" id="tweet-message">${tweetData.content.text}</textarea>
+    <p name="text" id="tweet-message">${tweetData.content.text}</p>
+    <script>$("p").text(${tweetData.content.text})</script>
   </div>
   <div class="extras">
-    <h4 class="date">${tweetData.created_at}</h4>
+    <h4 class="date">${timeago.format(tweetData.created_at)}</h4>
     <div class="tweet-icons">
       <i class="fas fa-flag icon"></i>
       <i class="fas fa-retweet icon"></i>
@@ -36,8 +37,21 @@ $(document).ready(() => {
 </article>`);
   };
 
-  $('#tweet-submit').on('submit', (event) => {
+
+
+  $('#tweet-submit').on('submit', function(event) {
     event.preventDefault();
+    const maxLength = 140;
+    const tweetlength = $(this).find("textarea").val().length;
+
+    if (tweetlength > maxLength) {
+      return alert("Exceeded max character length!");
+    }
+
+    if (tweetlength === 0) {
+      return alert("Please enter a tweet!");
+    }
+
     const encodedTweet = $('#tweet-submit').serialize();
 
     $.ajax({
@@ -45,8 +59,7 @@ $(document).ready(() => {
       method: 'POST',
       data: encodedTweet
     }).then(() => {
-      console.log(encodedTweet);
-
+      loadTweets();
     });
   });
 
