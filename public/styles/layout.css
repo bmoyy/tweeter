@@ -24,7 +24,6 @@ body {
   align-items: center;
 }
 
-
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
@@ -50,15 +49,4 @@ body {
     justify-content: space-around;
     align-items: flex-start;
   }
-
-  .container {
-    width: 50%;
-    padding-top: 120px;
-  }
-
-  header {
-    margin-top: 160px;
-    max-width: 728px;
-  }
-
  }

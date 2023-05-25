@@ -31,3 +31,10 @@ nav {
 .fa-angles-down {
   color: red;
 }
+
+@media only screen and (max-width: 1023px) {
+  nav {
+    background-color: #ffc900;
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
+  }
+}
