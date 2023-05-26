@@ -5,7 +5,7 @@
  */
 $(document).ready(() => {
 
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -53,11 +53,11 @@ $(document).ready(() => {
     $('#error').slideUp("fast");
 
     if (tweetlength > maxLength) {
-      return $('#error').html('Exceeded max character limit of 140.'), $('#error').slideDown("slow") ;
+      return $('#error').html('Exceeded max character limit of 140.'), $('#error').slideDown("slow");
     }
 
     if (tweetlength === 0) {
-      return $('#error').html('Cannot send an empty tweet! Please enter text.'), $('#error').slideDown("slow") ;
+      return $('#error').html('Cannot send an empty tweet! Please enter text.'), $('#error').slideDown("slow");
     }
 
     const encodedTweet = $('#tweet-submit').serialize();
@@ -69,15 +69,19 @@ $(document).ready(() => {
     }).then(() => {
       loadTweets();
     });
+
+    const counter = $('.counter');
+    counter.text(maxLength);
+    $(this).find("textarea").val("");
   });
 
   const loadTweets = function() {
     $.ajax({
-      url:"http://localhost:8080/tweets",
+      url: "http://localhost:8080/tweets",
       method: 'GET',
     }).then((data) => {
       renderTweets(data);
-    })
+    });
   };
 
   loadTweets();
